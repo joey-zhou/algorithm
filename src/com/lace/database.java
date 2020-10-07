@@ -1,16 +1,18 @@
 package com.lace;
+
 import javax.xml.transform.Result;
 import java.sql.*;
 
 public class database {
     private static final String url = "jdbc:mysql://192.168.145.148:3306/lace";
     private static final String user = "lace";
-    private static final String password = "980308";
+    private static final String password = "123456";
+
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection(url, user, password);
         PreparedStatement stmt = con.prepareStatement("SELECT * FROM member WHERE name =?");
-        stmt.setObject(1, "周子钦");
+        stmt.setObject(1, "小智");
         ResultSet result = stmt.executeQuery();
         while (result.next()) {
             long id = result.getLong(1);
